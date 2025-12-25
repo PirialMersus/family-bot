@@ -34,7 +34,7 @@ bot.on('text', async ctx => {
 
     const answer = await askGemini(q)
 
-    await ctx.reply(answer.slice(0, 4000))
+    await ctx.reply(answer.slice(0, 4000), { parse_mode: 'HTML' })
   } catch (e) {
     console.error('GEMINI ERROR', e)
 
