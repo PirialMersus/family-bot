@@ -10,7 +10,6 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 bot.start(ctx => {
   ctx.reply('Привет! Напиши:\n/bot твой вопрос\nили ответь /bot на сообщение')
 })
-
 bot.on('text', async ctx => {
   const text = ctx.message.text.trim()
   if (!text.startsWith('/bot')) return
@@ -31,7 +30,10 @@ bot.on('text', async ctx => {
   }
 
   try {
+    await ctx.sendChatAction('typing')
+
     const answer = await askGemini(q)
+
     await ctx.reply(answer.slice(0, 4000))
   } catch (e) {
     console.error('GEMINI ERROR', e)
@@ -45,6 +47,7 @@ bot.on('text', async ctx => {
     }
   }
 })
+
 
 bot.launch()
 startKeepAlive()
