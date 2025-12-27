@@ -12,7 +12,7 @@ bot.start(ctx => {
 })
 bot.on('text', async ctx => {
   const text = ctx.message.text.trim()
-  if (!text.startsWith('/bot')) return
+  if (!text.toLowerCase().startsWith('бот')) return
 
   let q = text.replace(/^\/bot(@\w+)?/, '').trim()
 
