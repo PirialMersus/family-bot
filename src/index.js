@@ -8,7 +8,7 @@ dotenv.config()
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
 bot.start(ctx => {
-  ctx.reply('Привет! Напиши:\n/bot твой вопрос\nили ответь /bot на сообщение')
+  ctx.reply('Привет! Напиши:\n"бот" твой вопрос\nили ответь "бот" на сообщение')
 })
 bot.on('text', async ctx => {
   const text = ctx.message.text.trim()
